@@ -9,11 +9,13 @@ This is an attempt to organize workflow to start a software project.
     - List <b>Functional Requirements</b>
     - List <b>Non Functional Requirements</b>
     - Perform some <b>Data estimation</b>
-2.Create a project directory
+    
+2. Create a project directory
 3. Initialize NPM project
 ```shell 
 npm init -y
 ```
+
 4. Initialise git repository in root directory
 ```shell
 git init
