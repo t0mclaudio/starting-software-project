@@ -95,22 +95,33 @@ mkdir src
 ```
 9. Add scripts to `package.json`
 ```json
-"buid": "tsc",
+"build": "tsc",
 "dev": "nodemon ./src/index.ts",
 "start": "node ./dist/index.js"
 ```
 10. Create the `index.ts` Express App
 ```ts
-const app = Express()
-```
-11. Make sure <b>NO CORS</b> is set on Development 
-```ts
-App.use((req: Request, res: Response, next: NextFunction) => {
+import Express, { Application, NextFunction, Request, Response } from "express";
+
+const app: Application = Express();
+const port = process.env.PORT || 8000;
+
+app.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
   next();
+});
+
+app.get("/", (req: Request, res: Response) => {
+  res.json({
+    message: "Hello World",
+  });
+});
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
 ```
