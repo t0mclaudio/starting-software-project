@@ -96,8 +96,8 @@ mkdir src
 9. Add scripts to `package.json`
 ```json
 "buid": "tsc",
-"dev": "nodemon ./src/app.ts",
-"start": "node ./dist/app.js"
+"dev": "nodemon ./src/index.ts",
+"start": "node ./dist/index.js"
 ```
 10. Create the `index.ts` Express App
 ```ts
