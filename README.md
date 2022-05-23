@@ -45,7 +45,7 @@ npm install json-server
 8. Update contents for `server/db.json`
 9. Install client using `create-react-app`
 ```shell
-npx create react-app client --template @chakra-ui/typescript
+npx create-react-app client --template @chakra-ui/typescript
 ```
 10. Remove following unused files inside `client/src`
     - logo.svg
