@@ -28,9 +28,9 @@ node_modules
 ```
 5. Set node version in project root
 ```shell
-touch .nvm
+touch .nvmrc
 ```
-Inside `.nvm`
+Inside `.nvmrc`
 ```text
 14
 ```
