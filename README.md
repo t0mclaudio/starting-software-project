@@ -72,6 +72,10 @@ npm install -D typescript @types/express @types/node nodemon ts-node
 ```shell
 npx tsc —init
 ```
+if there is an issue, try
+```shell
+node_modules/.bin/tsc --init
+```
 5. Install dependencies
 ```shell
 npm install express dotenv
