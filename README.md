@@ -10,28 +10,52 @@ This is an attempt to organize workflow to start a software project.
     - List <b>Non Functional Requirements</b>
 2.Create a project directory
 3. Initialize NPM project
-      - `npm init -y`
-5. Initialise git repository in root directory
+```shell 
+npm init -y
+```
+4. Initialise git repository in root directory
+```shell
+git init
+touch .gitignore
+```
+Inside `.gitignore`
+```text
+node_modules
+.env
+```
+5. Set node version in project root
+```shell
+touch .nvm
+```
+Inside `.nvm`
+```text
+14
+```
 6. Install Dev dependencies
-     - `yarn add json-server`
+```shell
+npm install json-server
+```
 7. Create start script in root `package.json`
-    - `"server": "json-server --watch server/db.json"`
-7. Update contents for 
-    - `server/db.json`
-8. Install client using `create-react-app`
-    - `yarn create react-app client --template @chakra-ui/typescript`
-9. Remove following unused files inside `client/src`
+```json
+"server": "json-server --watch server/db.json"
+```
+8. Update contents for `server/db.json`
+9. Install client using `create-react-app`
+```shell
+npx create react-app client --template @chakra-ui/typescript
+```
+10. Remove following unused files inside `client/src`
     - logo.svg
     - Logo.tsx
-10. Clean up imports and module in `App.tsx`
-11. Create a `components` directory inside `client/src`
+11. Clean up imports and module in `App.tsx`
+12. Create a `components` directory inside `client/src`
 
 
 ## Bootstraping Express with Typescript
 
-1. Create project directory
+1. Inside project directory
 ```shell
-mkdir project-name
+mkdir server-name
 ```
 2. Initialize node
 ```shell
