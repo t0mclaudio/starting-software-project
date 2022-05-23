@@ -80,18 +80,18 @@ node_modules/.bin/tsc --init
 ```shell
 npm install express dotenv
 ```
-6. Create src directory inside root
-```shell
-mkdir src
-```
-7. Configure `tsconfig.json`
+6. Configure `tsconfig.json`
 ```json
-"root": "src",
+"rootDir": "src",
 "outDir": "dist"
 ```
-8. Create `includes` after `compilerOptions` in `tsconfig.json`
+7. Create `includes` after `compilerOptions` in `tsconfig.json`
 ```json
 "include": ["./src/**/*.ts"]
+```
+8. Create src directory inside root
+```shell
+mkdir src
 ```
 9. Add scripts to `package.json`
 ```json
