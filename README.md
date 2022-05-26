@@ -34,25 +34,21 @@ Inside `.nvmrc`
 ```text
 14
 ```
-6. Install Dev dependencies
+6. For mock server using JSON-SERVER, proceed to <b>Bootstrapping using JSON-SERVER</b>
+7. To build a server go to <b>Bootstraping Express with Typescript</b>
+8. To build a client go to <b>Bootstraping using Create React App</b>
+
+
+## Bootstrapping using JSON-SERVER
+1. Install Dev dependencies
 ```shell
 npm install json-server
 ```
-7. Create start script in root `package.json`
+2. Create start script in root `package.json`
 ```json
 "server": "json-server --watch server/db.json"
 ```
-8. Update contents for `server/db.json`
-9. Install client using `create-react-app`
-```shell
-npx create-react-app client --template @chakra-ui/typescript
-```
-10. Remove following unused files inside `client/src`
-    - logo.svg
-    - Logo.tsx
-11. Clean up imports and module in `App.tsx`
-12. Create a `components` directory inside `client/src`
-
+3. Update contents for `server/db.json`
 
 ## Bootstraping Express with Typescript
 
@@ -112,6 +108,7 @@ app.use((req: Request, res: Response, next: NextFunction) => {
     "Access-Control-Allow-Headers",
     "Origin, X-Requested-With, Content-Type, Accept"
   );
+  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
 
@@ -124,4 +121,42 @@ app.get("/", (req: Request, res: Response) => {
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+```
+
+## Bootstrapping the Client Side
+1. Install client using `create-react-app`
+```shell
+npx create-react-app client --template @chakra-ui/typescript
+```
+2. Remove following unused files inside `client/src`
+    - logo.svg
+    - Logo.tsx
+3. Clean up imports and module in `App.tsx`
+4. Create a `components` directory inside `client/src`
+5. Install `react-router-dom` for client side routing
+```shell
+npm install react-router-dom
+```
+6. Import modules for routing
+```ts
+import * as React from "react";
+import { Container } from "@chakra-ui/react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Main from "./pages/main";
+import Login from "./pages/login";
+
+export const App = () => (
+  <Router>
+    <Container>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </Container>
+  </Router>
+);
+```
+7. Create project directories for organisation
+```shell
+mkdir pages & mkdir components
 ```
