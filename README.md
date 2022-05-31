@@ -54,54 +54,58 @@ npm install json-server
 
 1. Inside project directory
 ```shell
-mkdir server-name
+mkdir server
 ```
 2. Initialize node
 ```shell
 npm init -y
 ```
-3. Install dev dependencies
-```shell 
-npm install -D typescript @types/express @types/node nodemon ts-node
+3. Install dependencies
+```shell
+npm install express dotenv cors body-parser bcryptjs express-async-handler json-server node-fetch
 ```
-4. Generate `tsconfig.json` file
+4. Install dev dependencies
+```shell 
+npm install -D typescript @types/express @types/node nodemon ts-node @types/cors @types/body-parser @types/bycryptjs @types/json-server @types/node-fetch
+```
+5. Generate `tsconfig.json` file
 ```shell
 npx tsc —init
 ```
-if there is an issue, try
+6. if there is an issue, try
 ```shell
 node_modules/.bin/tsc --init
 ```
-5. Install dependencies
-```shell
-npm install express dotenv
-```
-6. Configure `tsconfig.json`
+7. Configure `tsconfig.json`
 ```json
 "rootDir": "src",
 "outDir": "dist"
 ```
-7. Create `includes` after `compilerOptions` in `tsconfig.json`
+8. Create `includes` after `compilerOptions` in `tsconfig.json`
 ```json
 "include": ["./src/**/*.ts"]
 ```
-8. Create src directory inside root
+9. Create src directory inside root
 ```shell
 mkdir src
+mkdir src/routes
+mkdir src/controllers
+mkdir src/middlewares
 ```
-9. Add scripts to `package.json`
+10. Add scripts to `package.json`
 ```json
 "build": "tsc",
-"dev": "nodemon ./src/index.ts",
+"dev": "nodemon ./src/index.ts --ignore src/db.json",
+"db": "json-server --watch src/db.json --port 9000"
 "start": "node ./dist/index.js"
 ```
-10. Create the `index.ts` Express App
+11. Create the `index.ts` Express App
 ```ts
 import Express, { Application, NextFunction, Request, Response } from "express";
 
 const app: Application = Express();
 const port = process.env.PORT || 8000;
-
+// Move to middleware
 app.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Origin", "*");
   res.header(
@@ -111,12 +115,14 @@ app.use((req: Request, res: Response, next: NextFunction) => {
   res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
   next();
 });
-
+// Move to routes
 app.get("/", (req: Request, res: Response) => {
   res.json({
     message: "Hello World",
   });
 });
+
+// Create error handler middleware
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
