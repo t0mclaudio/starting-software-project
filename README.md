@@ -46,7 +46,7 @@ npm install json-server
 ```
 2. Create start script in root `package.json`
 ```json
-"server": "json-server --watch server/db.json"
+"server": "json-server --watch server/db.json --port 9000"
 ```
 3. Update contents for `server/db.json`
 
