@@ -105,24 +105,12 @@ import Express, { Application, NextFunction, Request, Response } from "express";
 
 const app: Application = Express();
 const port = process.env.PORT || 8000;
-// Move to middleware
-app.use((req: Request, res: Response, next: NextFunction) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
-  next();
-});
-// Move to routes
-app.get("/", (req: Request, res: Response) => {
-  res.json({
-    message: "Hello World",
-  });
-});
 
-// Create error handler middleware
+// parse application/json
+app.use(bodyParser.json());
+
+app.use(cors());
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
