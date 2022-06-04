@@ -138,10 +138,15 @@ npx create-react-app client --template @chakra-ui/typescript
     - logo.svg
     - Logo.tsx
 3. Clean up imports and module in `App.tsx`
-4. Create a `components` directory inside `client/src`
-5. Install `react-router-dom` for client side routing
+4. Organise project architecture
 ```shell
-npm install react-router-dom
+mkdir client/src/pages
+mkdir client/src/components
+mkdir client/src/hooks
+```
+5. Install dependencies
+```shell
+npm install react-router-dom react-query
 ```
 6. Import modules for routing
 ```ts
@@ -161,8 +166,4 @@ export const App = () => (
     </Container>
   </Router>
 );
-```
-7. Create project directories for organisation
-```shell
-mkdir pages & mkdir components
 ```
