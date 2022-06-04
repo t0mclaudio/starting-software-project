@@ -103,7 +103,7 @@ mkdir src/middlewares
 ```ts
 import Express, { Application, NextFunction, Request, Response } from "express";
 import cors from 'cors';
-//import routes and errorHandler
+//import routes and errorHandler middleware
 
 const app: Application = Express();
 const port = process.env.PORT || 8000;
@@ -116,12 +116,32 @@ app.use(cors());
 // routes
 // app.use(path, routes)
 
-//Error handler
-app.use(errorHandler);
+//Error handler middleware
+// app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+```
+12. Create error handler in `src/middleware`
+```ts
+import { Request, Response, NextFunction } from "express";
+
+interface ResponseError extends Error {
+  statusCode?: number;
+}
+
+export const errorHandler = (
+  err: ResponseError,
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  const statusCode = err.statusCode ? err.statusCode : 500;
+  res.status(statusCode).json({
+    message: err.message,
+  });
+};
 ```
 
 ## Bootstrapping the Client Side
