@@ -102,6 +102,8 @@ mkdir src/middlewares
 11. Create the `index.ts` Express App
 ```ts
 import Express, { Application, NextFunction, Request, Response } from "express";
+import cors from 'cors';
+//import routes and errorHandler
 
 const app: Application = Express();
 const port = process.env.PORT || 8000;
@@ -111,6 +113,11 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+// routes
+// app.use(path, routes)
+
+//Error handler
+app.use(errorHandler);
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
