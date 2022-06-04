@@ -143,6 +143,19 @@ export const errorHandler = (
   });
 };
 ```
+13. Skeleton the routes
+```ts
+import Express, { Router } from "express";
+import { ...controllers } from "../controller/controller";
+
+const routes: Router = Express.Router();
+
+routes.get("/", controller);
+routes.post("/", controller);
+routes.delete("/:id", controller);
+
+export default routes;
+```
 
 ## Bootstrapping the Client Side
 1. Install client using `create-react-app`
