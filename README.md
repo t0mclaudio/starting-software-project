@@ -62,11 +62,11 @@ npm init -y
 ```
 3. Install dependencies
 ```shell
-npm install express dotenv cors body-parser bcryptjs express-async-handler json-server node-fetch jsonwebtoken
+npm install express dotenv cors bcryptjs express-async-handler json-server node-fetch jsonwebtoken
 ```
 4. Install dev dependencies
 ```shell 
-npm install -D typescript @types/express @types/node nodemon ts-node @types/cors @types/body-parser @types/bycryptjs @types/json-server @types/node-fetch @types/jsonwebtoken
+npm install -D typescript @types/express @types/node nodemon ts-node @types/cors @types/bycryptjs @types/json-server @types/node-fetch @types/jsonwebtoken
 ```
 5. Generate `tsconfig.json` file
 ```shell
@@ -109,7 +109,7 @@ const app: Application = Express();
 const port = process.env.PORT || 8000;
 
 // parse application/json
-app.use(bodyParser.json());
+app.use(Express.json());
 
 app.use(cors());
 
