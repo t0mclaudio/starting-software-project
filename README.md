@@ -231,7 +231,7 @@ mkdir client/src/lib
 ```
 5. Install dependencies
 ```shell
-npm install react-router-dom react-query
+npm install react-router-dom
 ```
 6. Import modules for routing
 ```ts
@@ -251,4 +251,22 @@ export const App = () => (
     </Container>
   </Router>
 );
+```
+
+## Using React-Query
+1. Install v3 of React-Query
+```shell
+npm -i react-query
+```
+2. Wrap app with react query client
+```ts
+import { QueryClient, QueryClientProvider } from "react-query";
+const queryClient = new QueryClient();
+const App = () => {
+    return (
+        <QueryClientProvider client={queryClient}>
+        // children
+        </QueryClientProvider>
+    )
+}
 ```
