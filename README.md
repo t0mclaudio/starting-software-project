@@ -270,3 +270,23 @@ const App = () => {
     )
 }
 ```
+3. Write query
+```ts
+import { useQuery } from "react-query";
+import { ITask } from "../components/Tasks";
+
+async function getTasks(): Promise<ITask[]> {
+  const result = await fetch("http://localhost:8000/api/tasks", {
+    headers: {
+      authorization: `Bearer ${localStorage.getItem("token")}`,
+    },
+  });
+  const data = await result.json();
+  return data;
+}
+
+export const useGetTasks = () => {
+  return useQuery("tasks", getTasks);
+};
+
+```
