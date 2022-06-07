@@ -42,7 +42,7 @@ Inside `.nvmrc`
 ## Bootstrapping using JSON-SERVER
 1. Install Dev dependencies
 ```shell
-npm install json-server
+npm install -D json-server @types/json-server
 ```
 2. Create start script in root `package.json`
 ```json
@@ -50,7 +50,7 @@ npm install json-server
 ```
 3. Update contents for `server/db.json`
 
-## Bootstraping Express with Typescript
+## Bootstraping Express & Typescript
 
 1. Inside project directory
 ```shell
@@ -62,11 +62,11 @@ npm init -y
 ```
 3. Install dependencies
 ```shell
-npm install express dotenv cors bcryptjs express-async-handler json-server node-fetch jsonwebtoken
+npm install express dotenv cors bcryptjs express-async-handler jsonwebtoken
 ```
 4. Install dev dependencies
 ```shell 
-npm install -D typescript @types/express @types/node nodemon ts-node @types/cors @types/bycryptjs @types/json-server @types/node-fetch @types/jsonwebtoken
+npm install -D typescript nodemon ts-node @types/express @types/node @types/cors @types/bycryptjs @types/jsonwebtoken
 ```
 5. Generate `tsconfig.json` file
 ```shell
@@ -91,12 +91,12 @@ mkdir src
 mkdir src/routes
 mkdir src/controllers
 mkdir src/middlewares
+mkdir src/config
 ```
 10. Add scripts to `package.json`
 ```json
 "build": "tsc",
-"dev": "nodemon ./src/index.ts --ignore src/db.json",
-"db": "json-server --watch src/db.json --port 9000"
+"dev": "nodemon ./src/index.ts",
 "start": "node ./dist/index.js"
 ```
 11. Create the `index.ts` Express App
@@ -171,6 +171,7 @@ npx create-react-app client --template @chakra-ui/typescript
 mkdir client/src/pages
 mkdir client/src/components
 mkdir client/src/hooks
+mkdir client/src/lib
 ```
 5. Install dependencies
 ```shell
