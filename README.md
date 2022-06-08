@@ -161,7 +161,7 @@ export default routes;
 1. Create app/cluster in [MongoDb cloud](www.mongodb.com)
 2. Install extra packages
 ```shell
-npm -i mongoose
+npm install mongoose
 ```
 3. Add Mongo URI from MongoDB Cloud to `.env`
 ```
@@ -256,7 +256,7 @@ export const App = () => (
 ## Using React-Query
 1. Install v3 of React-Query
 ```shell
-npm -i react-query
+npm install react-query
 ```
 2. Wrap app with react query client
 ```ts
