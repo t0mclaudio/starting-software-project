@@ -66,7 +66,7 @@ npm install express dotenv cors bcryptjs express-async-handler jsonwebtoken
 ```
 4. Install dev dependencies
 ```shell 
-npm install -D typescript nodemon ts-node @types/express @types/node @types/cors @types/bycryptjs @types/jsonwebtoken
+npm install -D typescript nodemon ts-node @types/express @types/node @types/cors @types/bcryptjs @types/jsonwebtoken
 ```
 5. Generate `tsconfig.json` file
 ```shell
