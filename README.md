@@ -101,7 +101,7 @@ mkdir src/config
 ```
 11. Create the `index.ts` Express App
 ```ts
-import Express, { Application, NextFunction, Request, Response } from "express";
+import Express, { Application } from "express";
 import cors from 'cors';
 //import routes and errorHandler middleware
 
@@ -146,7 +146,7 @@ export const errorHandler = (
 13. Skeleton the routes
 ```ts
 import Express, { Router } from "express";
-import { ...controllers } from "../controller/controller";
+import { ...controllers } from "../controllers/controller";
 
 const routes: Router = Express.Router();
 
