@@ -156,6 +156,14 @@ routes.delete("/:id", controller);
 
 export default routes;
 ```
+14. Create controllers for routes
+```ts
+import { Request, Response } from "express";
+import asyncHandler from "express-async-handler";
+
+export const login = asyncHandler(async (_req: Request, res: Response) => {});
+export const register = asyncHandler(async (req: Request, res: Response) => {});
+```
 
 ## Configuring Mongo
 1. Create app/cluster in [MongoDb cloud](www.mongodb.com)
