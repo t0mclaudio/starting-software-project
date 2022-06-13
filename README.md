@@ -232,10 +232,11 @@ npx create-react-app client --template @chakra-ui/typescript
 3. Clean up imports and module in `App.tsx`
 4. Organise project architecture
 ```shell
-mkdir client/src/pages
-mkdir client/src/components
-mkdir client/src/hooks
-mkdir client/src/lib
+mkdir src
+mkdir src/pages
+mkdir src/components
+mkdir src/hooks
+mkdir src/lib
 ```
 5. Install dependencies
 ```shell
