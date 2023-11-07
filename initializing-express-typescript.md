@@ -1,4 +1,8 @@
-## Bootstraping Express & Typescript
+# Initilializing Express & Typescript
+
+## To Do
+[] link to main page
+[] create sections on initializing and deployment notes
 
 1. Inside project directory
 ```shell
