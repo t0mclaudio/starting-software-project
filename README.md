@@ -1,4 +1,4 @@
-# Bootstrapping a software project
+# Starting a software project
 This is an attempt to organize workflow to start a software project.
 
 ## Writing the Software Requirement Specification (SRS)
