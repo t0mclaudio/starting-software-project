@@ -38,3 +38,7 @@ Inside `.nvmrc`
 7. To build a server go to <b>[Bootstraping Express with Typescript](https://github.com/t0mclaudio/bootstrapping-app/blob/master/initializing-express-typescript.md)</b>
 8. To build a client go to <b>[Bootstraping using Create Client Side REACTJS](https://github.com/t0mclaudio/starting-software-project/blob/master/create-client-side-react.md)</b>
 9. [Add MongoDB as data store](https://github.com/t0mclaudio/starting-software-project/blob/master/adding-mongodb-as-data-store.md)
+
+
+## General software architecture overview
+![IMG_1999](https://github.com/t0mclaudio/starting-software-project/assets/11550373/be87298e-6a94-4f9a-a309-ebc0979cc69a)
