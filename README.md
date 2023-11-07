@@ -34,21 +34,9 @@ Inside `.nvmrc`
 ```text
 14
 ```
-6. For mock server using JSON-SERVER, proceed to <b>Bootstrapping using JSON-SERVER</b>
+6. For mock server using JSON-SERVER, proceed to <b>[Bootstrapping using JSON-SERVER](https://github.com/t0mclaudio/bootstrapping-app/blob/master/initializing-JSON-SERVER.md)</b>
 7. To build a server go to <b>[Bootstraping Express with Typescript](https://github.com/t0mclaudio/bootstrapping-app/blob/master/initializing-express-typescript.md)</b>
 8. To build a client go to <b>Bootstraping using Create React App</b>
-
-
-## Bootstrapping using JSON-SERVER
-1. Install Dev dependencies
-```shell
-npm install -D json-server @types/json-server
-```
-2. Create start script in root `package.json`
-```json
-"server": "json-server --watch server/db.json --port 9000"
-```
-3. Update contents for `server/db.json`
 
 ## Configuring Mongo
 1. Create app/cluster in [MongoDb cloud](www.mongodb.com)
