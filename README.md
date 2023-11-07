@@ -1,7 +1,7 @@
 # Bootstrapping a software project
 This is an attempt to organize workflow to start a software project.
 
-## Writing the SRS
+## Writing the Software Requirement Specification (SRS)
 
 1. Create `README.md` and write the Software Requirement Specification
     - Write title
