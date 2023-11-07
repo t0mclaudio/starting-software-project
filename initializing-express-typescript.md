@@ -1,12 +1,14 @@
 # Initilializing Express & Typescript
 
 ## To Do
-[] link to main page
-[] create sections on initializing and deployment notes
+- [ ] link to main page
+- [ ] create sections on initializing and deployment notes
+
+## Initialising project
 
 1. Inside project directory
 ```shell
-mkdir server
+mkdir [project folder] && cd [project folder]
 ```
 2. Initialize node
 ```shell
