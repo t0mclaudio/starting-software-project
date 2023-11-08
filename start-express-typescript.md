@@ -1,45 +1,53 @@
-# Initilializing Express & Typescript
+# Starting / Deploying Express & Typescript
 
-## To Do
-- [ ] link to main page
-- [ ] create sections on initializing and deployment notes
 
-## Initialising project
+- [ ] TODO: Create sections on starting and deployment notes
 
-1. Inside project directory
+## Starting the project
+Make sure that `node` and `npm` are installed using `Homebrew`
+
+- [ ] TODO: Create notes on installing `Node` and `NPM` using `Homebrew` as well as fixing issues encountered especially when migrating to a new machine
+
+Inside project directory
 ```shell
 mkdir [project folder] && cd [project folder]
 ```
-2. Initialize node
+And create a file to store node version to use for project
+```shell
+echo "[version number]" > .nvmrc
+echo "lts/*" > .nvmrc # to default to the latest LTS version
+echo "node" > .nvmrc # to default to the latest version
+```
+Initialize a project and create the package. json file
 ```shell
 npm init -y
 ```
-3. Install dependencies
+Install package dependencies
 ```shell
 npm install express dotenv cors bcryptjs express-async-handler jsonwebtoken
 ```
-4. Install dev dependencies
+Install dev dependencies
 ```shell 
 npm install -D typescript nodemon ts-node @types/express @types/node @types/cors @types/bcryptjs @types/jsonwebtoken
 ```
-5. Generate `tsconfig.json` file
+Generate `tsconfig.json` file
 ```shell
 npx tsc —init
 ```
-6. if there is an issue, try
+If there is an issue, try
 ```shell
 node_modules/.bin/tsc --init
 ```
-7. Configure `tsconfig.json`
+Configure `tsconfig.json`
 ```json
 "rootDir": "src",
 "outDir": "dist"
 ```
-8. Create `includes` after `compilerOptions` in `tsconfig.json`
+Create `includes` after `compilerOptions` in `tsconfig.json`
 ```json
 "include": ["./src/**/*.ts"]
 ```
-9. Create src directory inside root
+Create src directory inside root
 ```shell
 mkdir src
 mkdir src/routes
@@ -47,13 +55,13 @@ mkdir src/controllers
 mkdir src/middlewares
 mkdir src/config
 ```
-10. Add scripts to `package.json`
+Add scripts to `package.json`
 ```json
 "build": "tsc",
 "dev": "nodemon ./src/index.ts",
 "start": "node ./dist/index.js"
 ```
-11. Create the `index.ts` Express App
+Create the `index.ts` Express App
 ```ts
 import Express, { Application } from "express";
 import cors from 'cors';
@@ -77,8 +85,9 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 ```
-12. Create error handler in `src/middleware`
+Create error handler in `src/middleware`
 ```ts
+// make filename with errorHandler.ts
 import { Request, Response, NextFunction } from "express";
 
 interface ResponseError extends Error {
@@ -96,25 +105,35 @@ export const errorHandler = (
     message: err.message,
   });
 };
+
 ```
-13. Skeleton the routes
+Skeleton the routes
 ```ts
+// make filename with [name]Routes.ts
 import Express, { Router } from "express";
-import { ...controllers } from "../controllers/controller";
+
+// Replace controllers with proper namespace
+import { ...[controllers exported] } from "../controllers/[controller file name]";
 
 const routes: Router = Express.Router();
 
-routes.get("/", controller);
-routes.post("/", controller);
-routes.delete("/:id", controller);
+routes.get("/", controller); // replace with controller name
+routes.post("/", controller); // replace with controller name
+routes.delete("/:id", controller); // replace with controller name
 
 export default routes;
 ```
-14. Create controllers for routes
+Create controllers for routes
 ```ts
+// make filename with [name]Controller.ts
 import { Request, Response } from "express";
 import asyncHandler from "express-async-handler";
 
-export const login = asyncHandler(async (_req: Request, res: Response) => {});
-export const register = asyncHandler(async (req: Request, res: Response) => {});
+export const login = asyncHandler(async (_req: Request, res: Response) => {}); // Add logic inside
+export const register = asyncHandler(async (req: Request, res: Response) => {}); // Add logic inside
+```
+
+Execute the project using
+```shell
+npm run dev
 ```
