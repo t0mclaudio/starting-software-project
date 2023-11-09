@@ -32,7 +32,7 @@ npm install -D typescript nodemon ts-node @types/express @types/node @types/cors
 ```
 Generate `tsconfig.json` file
 ```shell
-npx tsc —init
+npx tsc -init
 ```
 If there is an issue, try
 ```shell
