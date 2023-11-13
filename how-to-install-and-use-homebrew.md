@@ -14,7 +14,7 @@ brew install [package name]
 
 To install GUI apps
 ```shell
-brew cask install [package name]
+brew install --cask [package name]
 ```
 To upgrade a package
 ```shell
