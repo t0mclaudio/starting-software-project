@@ -24,7 +24,7 @@ npm init -y
 ```
 Install package dependencies
 ```shell
-npm install express dotenv cors bcryptjs express-async-handler jsonwebtoken
+npm install express dotenv cors bcryptjs jsonwebtoken
 ```
 Install dev dependencies
 ```shell 
@@ -111,10 +111,25 @@ Create controllers for routes
 ```ts
 // make filename with [name]Controller.ts
 import { Request, Response } from "express";
-import asyncHandler from "express-async-handler";
 
-export const login = asyncHandler(async (_req: Request, res: Response) => {}); // Add logic inside
-export const register = asyncHandler(async (req: Request, res: Response) => {}); // Add logic inside
+export const login = (_req: Request, res: Response) => {}); // Add logic inside
+export const register = (req: Request, res: Response) => {}; // Add logic inside
+```
+
+**[OPTIONAL]:** Using Express Async Handler when doing async tasks like making network calls or Database calls
+
+```shell
+npm install express-async-handler
+```
+Add Express Async Handler to a controller
+```diff
+import { Request, Response } from "express";
++ import asyncHandler from "express-async-handler";
+
+- export const login = (_req: Request, res: Response) => {}); // Add logic inside
+- export const register = (req: Request, res: Response) => {}; // Add logic inside
++ export const login = asyncHandler(async (_req: Request, res: Response) => {}); // Add logic inside
++ export const register = asyncHandler(async (req: Request, res: Response) => {}); // Add logic inside
 ```
 
 Create error handler in `src/middleware`
