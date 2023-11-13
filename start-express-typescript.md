@@ -38,6 +38,15 @@ If there is an issue, try
 ```shell
 node_modules/.bin/tsc --init
 ```
+Create src directory inside root
+```shell
+mkdir src
+mkdir src/routes
+mkdir src/controllers
+mkdir src/middlewares
+mkdir src/config
+```
+
 Configure `tsconfig.json`
 ```json
 "rootDir": "src",
@@ -47,14 +56,7 @@ Create `includes` after `compilerOptions` in `tsconfig.json`
 ```json
 "include": ["./src/**/*.ts"]
 ```
-Create src directory inside root
-```shell
-mkdir src
-mkdir src/routes
-mkdir src/controllers
-mkdir src/middlewares
-mkdir src/config
-```
+
 Add scripts to `package.json`
 ```json
 "build": "tsc",
@@ -85,6 +87,36 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 ```
+
+Skeleton the routes
+```ts
+// make filename with [name]Routes.ts
+import Express, { Router } from "express";
+
+// Replace controllers with proper namespace
+import { ...[controllers exported] } from "../controllers/[controller file name]";
+
+const routes: Router = Express.Router();
+
+routes.get("/", controller); // replace with controller name
+routes.post("/", controller); // replace with controller name
+routes.delete("/:id", controller); // replace with controller name
+
+export default routes;
+```
+
+Don't forget to comment out routes in `index.ts`
+
+Create controllers for routes
+```ts
+// make filename with [name]Controller.ts
+import { Request, Response } from "express";
+import asyncHandler from "express-async-handler";
+
+export const login = asyncHandler(async (_req: Request, res: Response) => {}); // Add logic inside
+export const register = asyncHandler(async (req: Request, res: Response) => {}); // Add logic inside
+```
+
 Create error handler in `src/middleware`
 ```ts
 // make filename with errorHandler.ts
@@ -107,31 +139,8 @@ export const errorHandler = (
 };
 
 ```
-Skeleton the routes
-```ts
-// make filename with [name]Routes.ts
-import Express, { Router } from "express";
 
-// Replace controllers with proper namespace
-import { ...[controllers exported] } from "../controllers/[controller file name]";
-
-const routes: Router = Express.Router();
-
-routes.get("/", controller); // replace with controller name
-routes.post("/", controller); // replace with controller name
-routes.delete("/:id", controller); // replace with controller name
-
-export default routes;
-```
-Create controllers for routes
-```ts
-// make filename with [name]Controller.ts
-import { Request, Response } from "express";
-import asyncHandler from "express-async-handler";
-
-export const login = asyncHandler(async (_req: Request, res: Response) => {}); // Add logic inside
-export const register = asyncHandler(async (req: Request, res: Response) => {}); // Add logic inside
-```
+Don't forget to comment out error handling in index.js
 
 Execute the project using
 ```shell
