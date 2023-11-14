@@ -63,6 +63,14 @@ Add scripts to `package.json`
 "dev": "nodemon ./src/index.ts",
 "start": "node ./dist/index.js"
 ```
+
+Dockerize application
+```shell
+touch Dockerfile
+```
+
+Refer to [this guide](https://github.com/t0mclaudio/starting-software-project/blob/master/how-to-install-and-use-docker.md) to setup and run Docker container
+
 Create the `index.ts` Express App
 ```ts
 import Express, { Application } from "express";
