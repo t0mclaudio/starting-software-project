@@ -1,9 +1,29 @@
 # Starting / Deploying Express & Typescript
 
-
 - [ ] TODO: Create sections on starting and deployment notes
 
-## Starting the project
+## General overview of stages of this guide
+**1. Develop the TypeScript Application:**
+- Write and develop your TypeScript application, ensuring it has proper unit tests and follows best practices.
+
+**2. Create a Dockerfile:**
+- Set up a Dockerfile with a multi-stage build approach, separating the build and runtime stages. Ensure that the Dockerfile includes all necessary dependencies, sets the working directory, and copies the required files.
+
+**3. Setup CI/CD Workflow with GitHub Actions:**
+- Set up a CI/CD workflow in GitHub Actions by creating a `.github/workflows` directory with a YAML file (e.g., ci-cd.yml).
+- Define workflow triggers (e.g., on push to the production branch).
+- Configure jobs to run tests, build the Docker image, and push the image to a container registry (e.g., GitHub Packages).
+- Use secrets to securely store sensitive information like access tokens or credentials.
+- 
+**4. Use Docker Image in Production: [NOT IN SCOPE]**
+- On your production server, pull the Docker image from the container registry.
+- Run the Docker container using the production-ready Docker image.
+
+**5. Monitoring and Scaling: [NOT IN SCOPE]**
+- Implement monitoring tools and scaling strategies on your production server based on your application's needs.
+- Ensure that your Dockerized application is set up for production with proper security configurations, environment variables, and any necessary optimizations.
+
+### Starting the project
 Make sure that `node` and `npm` are installed using `Homebrew`
 
 - [ ] TODO: Create notes on installing `Node` and `NPM` using `Homebrew` as well as fixing issues encountered especially when migrating to a new machine
@@ -63,13 +83,6 @@ Add scripts to `package.json`
 "dev": "nodemon ./src/index.ts",
 "start": "node ./dist/index.js"
 ```
-
-Dockerize application
-```shell
-touch Dockerfile
-```
-
-Refer to [this guide](https://github.com/t0mclaudio/starting-software-project/blob/master/how-to-install-and-use-docker.md) to setup and run Docker container
 
 Create the `index.ts` Express App
 ```ts
@@ -162,10 +175,53 @@ export const errorHandler = (
 };
 
 ```
-
 Don't forget to comment out error handling in index.js
 
 Execute the project using
 ```shell
 npm run dev
+```
+
+### Dockerize application
+```shell
+touch Dockerfile
+```
+
+Refer to [this guide](https://github.com/t0mclaudio/starting-software-project/blob/master/how-to-install-and-use-docker.md) to setup and run Docker container
+
+### Setup CI/CD using Github actions
+```yml
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - production
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build Docker image
+        run: docker build -t ${{ secrets.DOCKER_IMAGE_NAME }} .
+
+      - name: Push Docker image to GitHub Packages
+        run: |
+          echo ${{ secrets.DOCKER_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+          docker push ghcr.io/${{ github.repository_owner }}/${{ secrets.DOCKER_IMAGE_NAME }}
 ```
