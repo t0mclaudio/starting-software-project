@@ -83,15 +83,17 @@ EXPOSE 8000
 ```
 ```shell
 #shell
-docker run -dp 3001:8000 <name-of-container>
+docker run -dp 3000:8000 <name-of-container>
+# Can be access in http://localhost:3000
 ```
 
 To run container
 ```shell
 # Run a Docker container in detached mode (-d) to run in the background
-# Publish (map) port 8000 on the host machine to port 3000 inside the container
+# Publish (map) port 3000 on the host machine to port 8000 inside the container
 # Replace '<name-of-container>' with the actual name or ID of your Docker container
-docker run -dp 8000:3000 <name-of-container>
+docker run -dp 3000:8000 <name-of-container>
+# Can be access in http://localhost:3000
 ```
 
 Make sure Docker is running and in same directory of Dockerfile
