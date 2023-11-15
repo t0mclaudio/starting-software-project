@@ -71,7 +71,7 @@ CMD ["npm", "start"]
 
 ```
 
-*IMPORTANT NOTE!*
+**IMPORTANT NOTE!**
 the following ports should be similar
 ```js
 //index.js || index.ts
