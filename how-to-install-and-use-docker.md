@@ -28,6 +28,19 @@ CMD ["node", "src/index.js"]
 EXPOSE 3000
 ```
 
+*IMPORTANT NOTE!*
+the following ports should be similar
+```
+//index.js || index.ts
+const port = process.env.PORT || 8000;
+
+//Dockerfile
+EXPOSE 8000
+
+//shell
+docker run -dp 3001:8000 <name-of-container>
+```
+
 To run container
 ```shell
 docker run -dp 127.0.0.1:3000:3000 <name-of-container>
