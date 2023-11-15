@@ -88,13 +88,17 @@ docker run -dp 3001:8000 <name-of-container>
 
 To run container
 ```shell
-docker run -dp 127.0.0.1:3000:3000 <name-of-container>
+# Run a Docker container in detached mode (-d) to run in the background
+# Publish (map) port 8000 on the host machine to port 3000 inside the container
+# Replace '<name-of-container>' with the actual name or ID of your Docker container
+docker run -dp 8000:3000 <name-of-container>
 ```
 
-Make sure Docker is running. At the root directory, build the image
-`-t` tags name of docker image
+Make sure Docker is running and in same directory of Dockerfile
 ```shell
-docker build -t <name of docker image> .
+# Build a Docker image using the current directory as the build context (.)
+# Tag (-t) the image with a specified name ("<name-of-docker-image>")
+docker build -t <name-of-docker-image> .
 ```
 To list all running containers
 ```
