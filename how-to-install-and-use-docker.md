@@ -30,14 +30,16 @@ EXPOSE 3000
 
 *IMPORTANT NOTE!*
 the following ports should be similar
-```
+```js
 //index.js || index.ts
 const port = process.env.PORT || 8000;
-
-//Dockerfile
+```
+```Dockerfile
+#Dockerfile
 EXPOSE 8000
-
-//shell
+```
+```shell
+#shell
 docker run -dp 3001:8000 <name-of-container>
 ```
 
